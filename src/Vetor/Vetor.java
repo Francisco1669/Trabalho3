@@ -1,7 +1,7 @@
 package Vetor;
 
 public class Vetor {
-    private double[] notas = new double[5];
+    private double[] notas = new double[100001];
     private int totalNotas = 0;
 
     public void adiciona(double nota) {

@@ -15,27 +15,22 @@ public class No {
         return info;
     }
 
-    
     public void setInfo(int info) {
         this.info = info;
     }
 
-    
     public No getAnt() {
         return ant;
     }
 
-    
     public void setAnt(No ant) {
         this.ant = ant;
     }
 
-    
     public No getProx() {
         return prox;
     }
 
-    
     public void setProx(No prox) {
         this.prox = prox;
     }

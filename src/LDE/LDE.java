@@ -48,6 +48,25 @@ public class LDE implements Lista {
 
     @Override
     public boolean remove(int info) {
+        No p = inicio;
+        while (p != null && p.getInfo() != info)
+            p = p.getProx();
+        if (p == null)
+            return false;
+        if (p == inicio) {
+            inicio = p.getProx();
+            if (inicio != null)
+                inicio.setAnt(null);
+            else
+                fim = null;
+        } else if (p.getProx() == null) {
+            p.getAnt().setProx(null);
+            fim = p.getAnt();
+        } else {
+            p.getAnt().setProx(p.getProx());
+            p.getProx().setAnt(p.getAnt());
+        }
+        return true;
 
     }
 
