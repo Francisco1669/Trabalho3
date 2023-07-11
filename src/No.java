@@ -1,4 +1,4 @@
-package LDE;
+
 
 public class No {
     private int info;

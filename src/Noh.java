@@ -1,14 +1,14 @@
-package Arvore_Binaria;
 
-public class No {
+
+public class Noh {
     
 
     private int valor;
-    private No esq;
-    private No dir;
-    private No pai;
+    private Noh esq;
+    private Noh dir;
+    private Noh pai;
 
-    public No(int v) {
+    public Noh(int v) {
         this.valor = v;
     }
 
@@ -16,15 +16,15 @@ public class No {
         return valor;
     }
 
-    public No getEsq() {
+    public Noh getEsq() {
         return esq;
     }
 
-    public No getDir() {
+    public Noh getDir() {
         return dir;
     }
 
-    public No getPai() {
+    public Noh getPai() {
         return pai;
     }
 
@@ -32,15 +32,15 @@ public class No {
         this.valor = valor;
     }
 
-    public void setEsq(No esq) {
+    public void setEsq(Noh esq) {
         this.esq = esq;
     }
 
-    public void setDir(No dir) {
+    public void setDir(Noh dir) {
         this.dir = dir;
     }
 
-    public void setPai(No pai) {
+    public void setPai(Noh pai) {
         this.pai = pai;
     }
 
