@@ -16,8 +16,12 @@ public class App {
         manipuladorMapa.exibirVeiculosVetor();
         manipuladorMapa.exibirVeiculosAAB();
         manipuladorMapa.exibirVeiculosLDE();
-        manipuladorMapa.contarVeiculosFord();
-        manipuladorMapa.removerVeiculos();
+        manipuladorMapa.contarVeiculosFordAAB();
+        manipuladorMapa.contarVeiculosFordVetor();
+        manipuladorMapa.contarVeiculosFordLDE();
+        manipuladorMapa.removerVeiculosVetor();
+        manipuladorMapa.removerVeiculosLDE();
+        manipuladorMapa.removerVeiculosAAB();
         manipuladorMapa.exibirTemposGastos();
     }
 }
