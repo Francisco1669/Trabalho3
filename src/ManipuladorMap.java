@@ -1,9 +1,9 @@
-import java.util.Map;
 
 public class ManipuladorMap {
-    private Map<Integer, Veiculo> vetorMapa;
-    private Map<Integer, Veiculo> listaMapa;
-    private Map<Integer, Veiculo> arvoreMapa;
+    private VetorMap<Integer, Veiculo> vetorMapa;
+    
+    private AAB<Integer, Veiculo> arvoreMapa;
+    private LDE<Integer, Veiculo> ldeMap;
 
     private long tempoInserirVetor;
     private long tempoExibirVetor;
@@ -18,10 +18,10 @@ public class ManipuladorMap {
     private long tempoRemoverLDE;
     private long tempoRemoverVetor;
 
-    public ManipuladorMap(Map<Integer, Veiculo> vetorMapa, Map<Integer, Veiculo> listaMapa,
-            Map<Integer, Veiculo> arvoreMapa) {
+    public ManipuladorMap(VetorMap<Integer, Veiculo> vetorMapa, LDE<Integer, Veiculo> ldeMap,
+            AAB<Integer, Veiculo> arvoreMapa) {
         this.vetorMapa = vetorMapa;
-        this.listaMapa = listaMapa;
+        this.ldeMap = ldeMap;
         this.arvoreMapa = arvoreMapa;
     }
 
@@ -55,7 +55,7 @@ public class ManipuladorMap {
         for (int i = 0; i < 100000; i++) {
             Veiculo veiculo = new Veiculo();
 
-            listaMapa.put(veiculo.getChassi(), veiculo);
+            ldeMap.put(veiculo.getChassi(), veiculo);
 
         }
 
@@ -66,7 +66,7 @@ public class ManipuladorMap {
         tempoExibirLDE = System.nanoTime();
 
         System.out.println("Veículos no mapa da lista:");
-        for (Veiculo veiculo : listaMapa.values()) {
+        for (Veiculo veiculo : ldeMap.values()) {
             System.out.println(veiculo);
         }
 
@@ -116,7 +116,7 @@ public class ManipuladorMap {
 
         int countLista = 0;
 
-        for (Veiculo veiculo : listaMapa.values()) {
+        for (Veiculo veiculo : ldeMap.values()) {
             if (veiculo.getMarca().equals("Ford")) {
                 countLista++;
             }
@@ -147,8 +147,7 @@ public class ManipuladorMap {
         tempoRemoverVetor = System.nanoTime();
 
         vetorMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        listaMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        arvoreMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
+        
 
         tempoRemoverVetor = System.nanoTime() - tempoRemoverVetor;
     }
@@ -156,9 +155,9 @@ public class ManipuladorMap {
     public void removerVeiculosLDE() {
         tempoRemoverLDE = System.nanoTime();
 
-        vetorMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        listaMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        arvoreMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
+        
+        ldeMap.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
+        
 
         tempoRemoverLDE = System.nanoTime() - tempoRemoverLDE;
     }
@@ -166,8 +165,7 @@ public class ManipuladorMap {
     public void removerVeiculosAAB() {
         tempoRemoverAAB = System.nanoTime();
 
-        vetorMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        listaMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
+        
         arvoreMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
 
         tempoRemoverAAB = System.nanoTime() - tempoRemoverAAB;
