@@ -1,6 +1,6 @@
 
 public class ManipuladorMap {
-    private VetorMap<Integer, Veiculo> vetorMapa;
+    private VetorMap vetorMapa;
     
     private AAB<Integer, Veiculo> arvoreMapa;
     private LDE<Integer, Veiculo> ldeMap;
@@ -18,7 +18,7 @@ public class ManipuladorMap {
     private long tempoRemoverLDE;
     private long tempoRemoverVetor;
 
-    public ManipuladorMap(VetorMap<Integer, Veiculo> vetorMapa, LDE<Integer, Veiculo> ldeMap,
+    public ManipuladorMap(VetorMap vetorMapa, LDE<Integer, Veiculo> ldeMap,
             AAB<Integer, Veiculo> arvoreMapa) {
         this.vetorMapa = vetorMapa;
         this.ldeMap = ldeMap;
@@ -148,18 +148,20 @@ public class ManipuladorMap {
 
         vetorMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
         
-
         tempoRemoverVetor = System.nanoTime() - tempoRemoverVetor;
+        
+        System.out.println("Tempo gasto até remover os veículos do vetor: " + tempoRemoverVetor);
     }
 
     public void removerVeiculosLDE() {
         tempoRemoverLDE = System.nanoTime();
 
         
-        ldeMap.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
-        
+        ldeMap.entrySet().removeIf(entry -> entry.getKey() <= 202050000);        
 
         tempoRemoverLDE = System.nanoTime() - tempoRemoverLDE;
+
+        System.out.println("Tempo gasto até remover os veículos da lista: " + tempoRemoverLDE);
     }
 
     public void removerVeiculosAAB() {
@@ -168,7 +170,11 @@ public class ManipuladorMap {
         
         arvoreMapa.entrySet().removeIf(entry -> entry.getKey() <= 202050000);
 
+       
+
         tempoRemoverAAB = System.nanoTime() - tempoRemoverAAB;
+
+         System.out.println("Tempo gasto até remover os veículos da árvore: " + tempoRemoverAAB);
     }
 
     public void exibirTemposGastos() {

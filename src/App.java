@@ -3,7 +3,7 @@
 public class App {
     public static void main(String[] args) {
         
-        VetorMap<Integer, Veiculo> vetorMapa = new VetorMap<>();
+        VetorMap vetorMapa = new VetorMap();
         LDE<Integer, Veiculo> listaMapa = new LDE<>();
         AAB<Integer, Veiculo> arvoreMapa = new AAB<>();
            
