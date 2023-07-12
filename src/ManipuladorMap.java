@@ -62,37 +62,63 @@ public class ManipuladorMap {
         tempoInserirLDE = System.nanoTime() - tempoInserirLDE;
     }
 
-    public void exibirVeiculosLDE() {
-        tempoExibirLDE = System.nanoTime();
-
-        System.out.println("Veículos no mapa da lista:");
-        for (Veiculo veiculo : ldeMap.values()) {
+    public void ordenarVeiculosVetor() {
+        tempoExibirVetor = System.nanoTime();
+    
+        Veiculo[] veiculos = vetorMapa.values().toArray(new Veiculo[0]);
+    
+        int tamanho = veiculos.length;
+        for (int i = 0; i < tamanho - 1; i++) {
+            for (int j = 0; j < tamanho - i - 1; j++) {
+                if (veiculos[j].getChassi() > veiculos[j + 1].getChassi()) {
+                    Veiculo temp = veiculos[j];
+                    veiculos[j] = veiculos[j + 1];
+                    veiculos[j + 1] = temp;
+                }
+            }
+        }
+    
+        System.out.println("Veículos ordenados por número do chassi:");
+        for (Veiculo veiculo : veiculos) {
             System.out.println(veiculo);
         }
+    
+        tempoExibirVetor = System.nanoTime() - tempoExibirVetor;
+    }
 
+    public void ordenarVeiculosLDE() {
+        tempoExibirLDE = System.nanoTime();
+    
+        Veiculo[] veiculos = ldeMap.values().toArray(new Veiculo[0]);
+    
+        int tamanho = veiculos.length;
+        for (int i = 0; i < tamanho - 1; i++) {
+            for (int j = 0; j < tamanho - i - 1; j++) {
+                if (veiculos[j].getChassi() > veiculos[j + 1].getChassi()) {
+                    Veiculo temp = veiculos[j];
+                    veiculos[j] = veiculos[j + 1];
+                    veiculos[j + 1] = temp;
+                }
+            }
+        }
+    
+        System.out.println("Veículos ordenados por número do chassi:");
+        for (Veiculo veiculo : veiculos) {
+            System.out.println(veiculo);
+        }
+    
         tempoExibirLDE = System.nanoTime() - tempoExibirLDE;
     }
 
     public void exibirVeiculosAAB() {
         tempoExibirAAB = System.nanoTime();
 
-        System.out.println("Veículos no mapa da árvore:");
-        for (Veiculo veiculo : arvoreMapa.values()) {
-            System.out.println(veiculo);
-        }
-
-        tempoExibirAAB = System.nanoTime() - tempoExibirAAB;
-    }
-
-    public void exibirVeiculosVetor() {
-        tempoExibirVetor = System.nanoTime();
-
         System.out.println("Veículos no mapa do vetor:");
         for (Veiculo veiculo : vetorMapa.values()) {
             System.out.println(veiculo);
         }
 
-        tempoExibirVetor = System.nanoTime() - tempoExibirVetor;
+        tempoExibirAAB = System.nanoTime() - tempoExibirAAB;
     }
 
     public void contarVeiculosFordVetor() {
